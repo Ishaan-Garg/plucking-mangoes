@@ -3,14 +3,15 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Constraint = Matter.Constraint;
 
-var boy,boySprite,ground;
+var boy,boySprite,ground,stone,stoneimg;
 
 function preload()
 {
 
 boy=loadImage("images/boy.png")
-	
+
 }
 
 function setup() {
@@ -20,12 +21,13 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	ground= new Ground (600,500,1200,10);
+	
 
-	boySprite=createSprite(200,550,50,50)
+	boySprite=createSprite(200,550,50,50);
 	boySprite.addImage("b",boy);
 	boySprite.scale=0.1;
 	
+	stone= new Stone (150,500,25,25);
 	
 
 	Engine.run(engine);
@@ -37,7 +39,7 @@ function draw() {
   rectMode(CENTER);
   background("blue");
 
-  ground.display();
+  stone.display();
   
   drawSprites();
  
